@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <!-- Creating ted_talk table -->
+    <changeSet author="Abubakar" id="1">
+        <createTable tableName="ted_talk">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="title" type="VARCHAR(100)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="title_unique_constraint"/>
+            </column>
+            <column name="author" type="VARCHAR(80)"/>
+            <column name="date" type="VARCHAR(80)"/>
+            <column name="views" type="BIGINT"/>
+            <column name="likes" type="BIGINT"/>
+            <column name="link" type="VARCHAR(200)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="link_unique_constraint"/>
+            </column>
+            <column name="created_by" type="VARCHAR(40)"/>
+            <column name="created_on" type="timestamp"/>
+            <column name="updated_by" type="VARCHAR(40)"/>
+            <column name="updated_on" type="timestamp"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: IO-pilot-system-deployment
+spec:
+  selector:
+    matchLabels:
+      app: IO-pilot-system
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: IO-pilot-system
+    spec:
+      containers:
+        - name: IO-pilot-system
+          image: IO-pilot-system:1.0
+          ports:
+            - containerPort: 8080
+          env:   # Setting Enviornmental Variables
+            - name: DB_HOST   # Setting Database host address from configMap
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-conf  # name of configMap
+                  key: host
+            - name: DB_NAME  # Setting Database name from configMap
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-conf
+                  key: name
+            - name: POSTGRES_USER  # Setting Database username from Secret
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials # Secret Name
+                  key: postgres_user
+            - name: POSTGRES_PASSWORD # Setting Database password from Secret
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials
+                  key: postgres_password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: IO-pilot-system-svc
+  labels:
+    name: IO-pilot-system
+spec:
+  ports:
+    - nodePort: 30163
+      port: 8080
+      targetPort: 8080
+      protocol: "TCP"
+  selector:
+    app: IO-pilot-system
+  type: LoadBalancer
