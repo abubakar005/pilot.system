@@ -1,4 +1,4 @@
-# pilot.system
+# Pilot System
 
 # Steps to run the Project
 
