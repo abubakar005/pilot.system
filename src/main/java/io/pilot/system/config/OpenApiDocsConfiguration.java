@@ -20,7 +20,7 @@ public class OpenApiDocsConfiguration {
                         .version("v1.0")
                         .contact(new Contact()
                                 .name("Abu Bakar")
-                                .url("https://github.com/abubakar005/")
+                                .url("https://github.com/abubakar005/pilot.system")
                                 .email("abubakar.cs@gmail.com"))
                         .termsOfService("TOC")
                         .license(new License().name("License").url("#"))

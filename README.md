@@ -31,6 +31,7 @@ Run application
 15. Actuator (Health Check)
 16. Postman Collection (Attached in the root directory)
 17. Cache Management 
+18. Unit Testing
 
 # Information of deployment on Docker containers
 Docker compose file is available in the project root directory, which will deploy the following containers
@@ -216,4 +217,5 @@ I have also added configurations for auto deployment on **Heroku cloud** using t
 - Swagger URL on Heroku Cloud: https://pilot-system.herokuapp.com/swagger-ui/index.html#/
 
 **NOTE:** I have not implemented unit tests for CSV file import as it would require new CSV file every time for batch processing.
+
 **NOTE:** Application is deployed on Heroku cloud, APIs are accessible.

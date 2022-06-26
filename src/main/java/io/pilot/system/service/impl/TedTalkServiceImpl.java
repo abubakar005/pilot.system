@@ -62,7 +62,7 @@ public class TedTalkServiceImpl implements TedTalkService {
 
     @Override
     public TedTalk getTedTalkById(long id) {
-System.out.println("--------------------------");
+
         Optional<TedTalk> tedTalk = tedTalkRepository.findById(id);
 
         if(!tedTalk.isPresent())
